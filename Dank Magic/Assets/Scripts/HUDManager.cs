@@ -29,7 +29,8 @@ public class HUDManager : MonoBehaviour {
 
     public void UpdateHealth()
     {
-        healthBar.value = judyControl.health;
+        if(healthBar!=null)
+            healthBar.value = judyControl.health;
     }
 
     public void HighlightImage()

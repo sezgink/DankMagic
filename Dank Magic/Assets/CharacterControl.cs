@@ -28,6 +28,7 @@ public class CharacterControl : MonoBehaviour {
     public GameObject hitEffect;
     int proIndex;
     public bool ruhtasiAlindi;
+    bool willCombo = false;
 
     public Collider swordCollider;
     // Use this for initialization
@@ -81,6 +82,9 @@ public class CharacterControl : MonoBehaviour {
 			jump ();
 		}
 		if (Input.GetKeyDown (KeyCode.Mouse0)) {
+            if (isAttacking)
+                willCombo = true;
+            else
 			attack ();
 		}
 		if (Input.GetKeyDown (KeyCode.Q)) {
@@ -187,6 +191,12 @@ public class CharacterControl : MonoBehaviour {
 		isAttacking = false;
 		animator.SetBool ("isAttacking", false);
         swordCollider.enabled = false;
+
+    }
+    public void willAttackSustain() {
+        if (!willCombo)
+            endAttack();
+        willCombo = false;
 
     }
 	public void endSpellcast() {
