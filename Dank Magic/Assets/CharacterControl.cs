@@ -196,6 +196,7 @@ public class CharacterControl : MonoBehaviour {
     public void willAttackSustain() {
         if (!willCombo)
             endAttack();
+        dealtDamage = false;
         willCombo = false;
 
     }
