@@ -43,7 +43,8 @@ public class RiderControl : MonoBehaviour {
 				meleeAttack ();
 
 				animator.SetBool ("isRunning", false);
-				nma.speed = 1;
+                nma.destination = Player.position;
+                nma.speed = 1;
 
 			} else if ((Player.position - transform.position).magnitude <= seeRange) {
 				nma.destination = Player.position;
