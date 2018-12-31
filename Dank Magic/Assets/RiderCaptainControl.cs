@@ -14,6 +14,7 @@ public class RiderCaptainControl : MonoBehaviour {
 	Animator animator;
 	RawImage rawImage;
     public GameObject fireball;
+    public GameObject rotatingFireball;
 
 	bool alive = true;
 	bool attacking = false;
@@ -43,23 +44,27 @@ public class RiderCaptainControl : MonoBehaviour {
     {
         Instantiate(fireball, transform.position + transform.forward * 1.5f + Vector3.up * 2f, Quaternion.identity);
     }
+    public void DeployRotatingBall() {
+        Instantiate(rotatingFireball, transform.position + transform.forward * 1.5f + Vector3.up * 2f, Quaternion.identity);
 
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    void Update () {
 		if (alive) {
 			if ((Player.position - transform.position).magnitude <= meleeRange) {
 				nma.destination = Player.position;
 				meleeAttack ();
 
-				animator.SetBool ("isSpellcasting", false);
-				animator.SetBool ("isRunning", false);
+                animator.SetBool("isGreatSpellcasting", false);
+                animator.SetBool ("isRunning", false);
 				nma.speed = 1;
 
 			} else if ((Player.position - transform.position).magnitude <= longRange) {
 				nma.destination = Player.position;
 				rangeAttack ();
 
-				animator.SetBool ("isGreatSpellcasting", false);
+                animator.SetBool("isSpellcasting", false);
 				animator.SetBool ("isRunning", false);
 				nma.speed = 1;
 			}
@@ -80,14 +85,14 @@ public class RiderCaptainControl : MonoBehaviour {
 	}
 	void meleeAttack() {
 		if (c1 > meleeAttackPeriod) {
-			animator.SetBool ("isGreatSpellcasting", true);
+			animator.SetBool ("isSpellcasting", true);
 			attacking = true;
 			c1 = 0;
 		}
 	}
 	void rangeAttack() {
 		if (c2 > rangeAttackPeriod) {
-			animator.SetBool ("isSpellcasting", true);
+			animator.SetBool ("isGreatSpellcasting", true);
 			attacking = true;
 			c2 = 0;
 		}
@@ -101,6 +106,8 @@ public class RiderCaptainControl : MonoBehaviour {
 		stopAttack ();
 		animator.SetTrigger ("Hit");
 		health -= amount;
+        if (health < 0)
+            health = 0;
 		rawImage.rectTransform.localScale = new Vector3(health / 30f,1,1) ;
 		//print (health);
 		if(health<1)

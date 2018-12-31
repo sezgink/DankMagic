@@ -140,7 +140,7 @@ public class RiderControl : MonoBehaviour {
 
     }
     public void CheckAttack() {
-        print("Checking attack");
+        //print("Checking attack");
         if ((Player.position - transform.position).magnitude > meleeRange)
             stopAttack();
     }
@@ -154,7 +154,7 @@ public class RiderControl : MonoBehaviour {
 		if (col.gameObject.tag == "Player" && swordCollider.enabled && !dealtDmg) {
 			//print (col.gameObject.name);
             CharacterControl cc = col.GetComponent<CharacterControl>();
-            cc.Heal(-1);
+            cc.Heal(-5);
             dealtDmg = true;
 		}
 

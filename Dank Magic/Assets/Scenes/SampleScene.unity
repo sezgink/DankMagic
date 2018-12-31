@@ -5526,6 +5526,18 @@ Prefab:
       propertyPath: m_RootOrder
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: 114461446948084858, guid: e5addbc73ce259149aa046c38ae68ed3,
+        type: 2}
+      propertyPath: fireball
+      value: 
+      objectReference: {fileID: 1536482994558986, guid: 581b0b41e2b68164aadfe9d6a839c0b2,
+        type: 2}
+    - target: {fileID: 114461446948084858, guid: e5addbc73ce259149aa046c38ae68ed3,
+        type: 2}
+      propertyPath: rotatingFireball
+      value: 
+      objectReference: {fileID: 1536482994558986, guid: d97ca30a69384874fa9ed63917ee4ddd,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5addbc73ce259149aa046c38ae68ed3, type: 2}
   m_IsPrefabAsset: 0
@@ -54443,6 +54455,16 @@ Prefab:
       propertyPath: judyCam
       value: 
       objectReference: {fileID: 442465278}
+    - target: {fileID: 114835376976512856, guid: c9ae9b500ce01364ab177b37a6b2f62e,
+        type: 2}
+      propertyPath: health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114835376976512856, guid: c9ae9b500ce01364ab177b37a6b2f62e,
+        type: 2}
+      propertyPath: spirits
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 64187411892882020, guid: c9ae9b500ce01364ab177b37a6b2f62e, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: c9ae9b500ce01364ab177b37a6b2f62e, type: 2}
