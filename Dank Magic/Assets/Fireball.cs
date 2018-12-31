@@ -10,7 +10,6 @@ public class Fireball : MonoBehaviour {
 
     private void OnEnable()
     {
-        print("Ball created");
         rb = GetComponent<Rigidbody>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
 

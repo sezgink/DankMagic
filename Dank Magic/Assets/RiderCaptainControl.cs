@@ -16,6 +16,7 @@ public class RiderCaptainControl : MonoBehaviour {
 	RawImage rawImage;
     public GameObject fireball;
     public GameObject rotatingFireball;
+    bool deployed = false;
 
 	bool alive = true;
 	bool attacking = false;
@@ -47,9 +48,20 @@ public class RiderCaptainControl : MonoBehaviour {
     }
     public void DeployRotatingBall() {
         //print("Deploy rotating ball");
-        var fireballI = (GameObject)Instantiate(rotatingFireball, transform.position + transform.forward * 1.5f + Vector3.up * 2f, Quaternion.identity);
+        if (deployed)
+        {
+            var selectedFireball = createdFireballs[createdFireballs.Count - 1];
+            selectedFireball.GetComponent<CleaverFireball>().ThrowFireball();
+            createdFireballs.Remove(selectedFireball);
+            
+        }
+        else
+        {
+            var fireballI = (GameObject)Instantiate(rotatingFireball, transform.position + transform.forward * 1.5f + Vector3.up * 2f, Quaternion.identity);
 
-        createdFireballs.Add(fireball);
+            createdFireballs.Add(fireball);
+            
+        }
     }
 
     // Update is called once per frame
@@ -115,6 +127,7 @@ public class RiderCaptainControl : MonoBehaviour {
     {
         //print ("end attack");
         animator.SetBool("isGreatSpellcasting", false);
+        deployed = !deployed;
 
     }
     public void takeDamage(int amount) {
