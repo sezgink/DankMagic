@@ -125,7 +125,10 @@ public class RiderCaptainControl : MonoBehaviour {
                     rangeAttack();
                 }
                 nma.destination = Player.position;
-                nma.speed = 3;
+                if (!attacking)
+                    nma.speed = 3;
+                else
+                    nma.speed = 0;
                 animator.SetBool("isAttacking", false);
                 animator.SetBool("isRunning", true);
                 if ((Player.position - transform.position).magnitude <= meleeRange) {
@@ -160,13 +163,16 @@ public class RiderCaptainControl : MonoBehaviour {
     {
         //print ("end attack");
         animator.SetBool("isSpellcasting", false);
+        stopAttack();
 
     }
     public void endGreatSpellcast()
     {
         //print ("end attack");
         animator.SetBool("isGreatSpellcasting", false);
-        deployed = !deployed;
+        stopAttack();
+
+       // deployed = !deployed;
 
     }
     public void takeDamage(int amount) {
