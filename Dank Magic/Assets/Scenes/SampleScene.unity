@@ -5613,6 +5613,16 @@ Prefab:
       value: 
       objectReference: {fileID: 1536482994558986, guid: d97ca30a69384874fa9ed63917ee4ddd,
         type: 2}
+    - target: {fileID: 114461446948084858, guid: e5addbc73ce259149aa046c38ae68ed3,
+        type: 2}
+      propertyPath: meleeRange
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114461446948084858, guid: e5addbc73ce259149aa046c38ae68ed3,
+        type: 2}
+      propertyPath: greatPeriod
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5addbc73ce259149aa046c38ae68ed3, type: 2}
   m_IsPrefabAsset: 0

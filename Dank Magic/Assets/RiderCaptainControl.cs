@@ -20,10 +20,10 @@ public class RiderCaptainControl : MonoBehaviour {
     public GameObject rotatingFireball;
     bool deployed = false;
     GameObject createdFireball;
-    
+    float greatCounter = 0f;
 	bool alive = true;
 	bool attacking = false;
-
+    public float greatPeriod;
     CleaverFireball cf;
 
 
@@ -89,6 +89,7 @@ public class RiderCaptainControl : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 		if (alive) {
+            /*
 			if ((Player.position - transform.position).magnitude <= meleeRange) {
 				nma.destination = Player.position;
 				meleeAttack ();
@@ -116,6 +117,22 @@ public class RiderCaptainControl : MonoBehaviour {
 				animator.SetBool ("isRunning", false);
 				nma.speed = 0;
 			}
+            */
+
+            if ((Player.position - transform.position).magnitude <= seeRange)
+            {
+                if (greatCounter > greatPeriod) {
+                    rangeAttack();
+                }
+                nma.destination = Player.position;
+                nma.speed = 3;
+                animator.SetBool("isAttacking", false);
+                animator.SetBool("isRunning", true);
+                if ((Player.position - transform.position).magnitude <= meleeRange) {
+                    meleeAttack();
+                }
+            }
+            greatCounter += Time.deltaTime;
             c1 += Time.deltaTime;
 			c2 += Time.deltaTime;
 		}
