@@ -14,17 +14,18 @@ public class HUDManager : MonoBehaviour {
 
 
     public void FireUsed() {
-        spiritImages[0].color = Color.gray;
+        skillImages[0].color = Color.gray;
     }
     public void FireRefresh()
     {
-        spiritImages[0].color = Color.white;
+        skillImages[0].color = Color.white;
     }
     public void ActivateSpiritBar()
     {
+        print("ActivateSpiritBar");
         spiritBar.SetActive(true);
-        for (int i = 0; i < spiritImages.Length; i++) {
-            spiritImages[i].color = Color.white;
+        for (int i = 0; i < skillImages.Length; i++) {
+            skillImages[i].color = Color.white;
         }
     }
 

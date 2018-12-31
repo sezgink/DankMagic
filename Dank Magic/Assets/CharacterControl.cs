@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterControl : MonoBehaviour {
 
     public GameObject gameOverMenu;
     public GameObject eventSystem;
+
+    public RawImage skillObject;
 
 	public float translateConstant;
 	public float rotateConstant;
@@ -20,6 +23,8 @@ public class CharacterControl : MonoBehaviour {
     public int health;
     public int spirits;
     public HUDManager hudManager;
+
+    bool ableToQ = true;
 
 
 	bool isJumping;
@@ -40,6 +45,7 @@ public class CharacterControl : MonoBehaviour {
     public float deadTime = 4f;
     bool fireUsed = false;
     int c5 = 0;
+    float qCounter= 0f;
 
     public Collider swordCollider;
     // Use this for initialization
@@ -125,10 +131,24 @@ public class CharacterControl : MonoBehaviour {
                     gameObject.SetActive(true);
                     Start();
                 }
-                if (c5 > 10) {
-                    hudManager.FireRefresh();
+                if (c5 > 30) {
+                    if (ruhtasiAlindi)
+                    {
+                        hudManager.FireRefresh();
+                        c5 = 0;
+                    }
+                }
+                if (ableToQ == false)
+                {
+                    if (qCounter > 5f)
+                    {
+                        qCounter = 0;
+
+                        activateQ();
+                    }
                 }
                 c5++;
+                qCounter += Time.deltaTime;
             }
         }
         else {
@@ -137,7 +157,12 @@ public class CharacterControl : MonoBehaviour {
                 GameOver();
         }
 	}
-	void attack() {
+    void activateQ() {
+        ableToQ = true;
+        skillObject.color = Color.cyan;
+
+    }
+    void attack() {
 		if (!isAttacking) {
 			if (onFloor) {
 				isAttacking = true;
@@ -150,7 +175,7 @@ public class CharacterControl : MonoBehaviour {
 	void spellcast(int i) {
         if (ruhtasiAlindi)
         {
-            if (!isSpellcasting && !spiritRigidbody.gameObject.activeInHierarchy)
+            if (!isSpellcasting && !spiritRigidbody.gameObject.activeInHierarchy && ableToQ)
             {
                 if (i == 0 && !spiritRigidbody.gameObject.activeInHierarchy)
                 {
@@ -172,6 +197,9 @@ public class CharacterControl : MonoBehaviour {
                         hudManager.FireUsed();
                     }
                 }
+                ableToQ = false;
+                skillObject.color = Color.gray;
+
             }
         }
 	}
