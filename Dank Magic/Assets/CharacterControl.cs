@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharacterControl : MonoBehaviour {
 
     public GameObject gameOverMenu;
-
+    public GameObject eventSystem;
 
 	public float translateConstant;
 	public float rotateConstant;
@@ -301,6 +301,8 @@ public class CharacterControl : MonoBehaviour {
         hudManager.UpdateSpiritBar();
     }
     public void GameOver() {
-        gameOverMenu.SetActive(true);
+        //gameOverMenu.SetActive(true);
+        eventSystem.GetComponent<EventManager>().pretargetRetry();
+        Time.timeScale = 0;
     }
 }

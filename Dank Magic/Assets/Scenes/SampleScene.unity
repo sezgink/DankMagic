@@ -27312,6 +27312,11 @@ Prefab:
       propertyPath: gameOverMenu
       value: 
       objectReference: {fileID: 334364868}
+    - target: {fileID: 114835376976512856, guid: c9ae9b500ce01364ab177b37a6b2f62e,
+        type: 2}
+      propertyPath: eventSystem
+      value: 
+      objectReference: {fileID: 1107968643}
     m_RemovedComponents:
     - {fileID: 64187411892882020, guid: c9ae9b500ce01364ab177b37a6b2f62e, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: c9ae9b500ce01364ab177b37a6b2f62e, type: 2}

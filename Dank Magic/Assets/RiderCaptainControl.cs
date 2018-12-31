@@ -40,7 +40,7 @@ public class RiderCaptainControl : MonoBehaviour {
 		Player = GameObject.FindGameObjectWithTag ("Player").transform;
 		nma = GetComponent<NavMeshAgent> ();
 		animator = GetComponent<Animator> ();
-		health = 30;
+		health = 150;
 		RawImage[] images = GetComponentsInChildren<RawImage>();
 		foreach(var image in images) {
 			if (image.gameObject.name == "HealthForeground")
@@ -181,7 +181,7 @@ public class RiderCaptainControl : MonoBehaviour {
 		health -= amount;
         if (health < 0)
             health = 0;
-		rawImage.rectTransform.localScale = new Vector3(health / 30f,1,1) ;
+		rawImage.rectTransform.localScale = new Vector3(health / 150f,1,1) ;
 		//print (health);
 		if(health<1)
 			death();
@@ -199,7 +199,7 @@ public class RiderCaptainControl : MonoBehaviour {
         {
            
                 if (other.GetComponent<CleaverFireball>().owner != 2)
-                    takeDamage(5);
+                    takeDamage(40);
             
 
             
