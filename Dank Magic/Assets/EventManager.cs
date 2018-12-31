@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class EventManager : MonoBehaviour {
     [SerializeField] GameObject PauseMenu;
     [SerializeField] GameObject GameOverMenu;
+    [SerializeField] GameObject WinnedGameMenu;
+
     bool isGameOver;
     // Use this for initialization
     void Start () {
@@ -53,6 +55,13 @@ public class EventManager : MonoBehaviour {
         GameOverMenu.SetActive(true);
         if(!isGameOver)
             GetComponent<EventSystem>().SetSelectedGameObject(GameOverMenu.transform.GetChild(0).gameObject);
+
+        isGameOver = true;
+    }
+    public void WinnedGame() {
+        WinnedGameMenu.SetActive(true);
+        if (!isGameOver)
+            GetComponent<EventSystem>().SetSelectedGameObject(WinnedGameMenu.transform.GetChild(0).gameObject);
 
         isGameOver = true;
     }
