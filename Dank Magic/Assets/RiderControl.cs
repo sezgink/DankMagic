@@ -100,7 +100,7 @@ public class RiderControl : MonoBehaviour {
         //dealtDmg = false;
 		stopAttack ();
         int r = Random.Range(0,6);
-        if(r>4)
+        if(r>3)
             animator.SetTrigger("Impact");
         health -= amount;
 		rawImage.rectTransform.localScale = new Vector3(health / 10f,1,1) ;
