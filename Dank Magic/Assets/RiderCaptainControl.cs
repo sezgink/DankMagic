@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class RiderCaptainControl : MonoBehaviour {
 
 	Transform Player;
+    public List<GameObject> createdFireballs;
 	public float longRange;
 	public float meleeRange;
 	public float seeRange;
@@ -45,8 +46,10 @@ public class RiderCaptainControl : MonoBehaviour {
         Instantiate(fireball, transform.position + transform.forward * 1.5f + Vector3.up * 2f, Quaternion.identity);
     }
     public void DeployRotatingBall() {
-        Instantiate(rotatingFireball, transform.position + transform.forward * 1.5f + Vector3.up * 2f, Quaternion.identity);
+        //print("Deploy rotating ball");
+        var fireballI = (GameObject)Instantiate(rotatingFireball, transform.position + transform.forward * 1.5f + Vector3.up * 2f, Quaternion.identity);
 
+        createdFireballs.Add(fireball);
     }
 
     // Update is called once per frame
@@ -102,7 +105,19 @@ public class RiderCaptainControl : MonoBehaviour {
 		attacking = false;
 
 	}
-	public void takeDamage(int amount) {
+    public void endSpellcast()
+    {
+        //print ("end attack");
+        animator.SetBool("isSpellcasting", false);
+
+    }
+    public void endGreatSpellcast()
+    {
+        //print ("end attack");
+        animator.SetBool("isGreatSpellcasting", false);
+
+    }
+    public void takeDamage(int amount) {
 		stopAttack ();
 		animator.SetTrigger ("Hit");
 		health -= amount;
@@ -124,7 +139,8 @@ public class RiderCaptainControl : MonoBehaviour {
     {
         if (other.gameObject.tag == "Fire")
         {
-            takeDamage(5);
+            if(other.GetComponent<CleaverFireball>().owner!=2)
+                takeDamage(5);
         }
     }
     //void OnCollisionEnter(Collision col) {

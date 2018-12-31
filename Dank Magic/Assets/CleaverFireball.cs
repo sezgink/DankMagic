@@ -16,8 +16,11 @@ public class CleaverFireball : MonoBehaviour {
     public float turnHeight;
     public float turnRadious;
     public float trigCo = 1f;
+    public int owner = 2;
     private void OnEnable()
     {
+        print("Ball created");
+
         rb = GetComponent<Rigidbody>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
         if (target && rb) ;
@@ -41,7 +44,7 @@ public class CleaverFireball : MonoBehaviour {
             }
             else
             {
-                direction = (target.position + Vector3.up * turnHeight - transform.position + turnRadious * Mathf.Cos(pastTime * trigCo) * Vector3.right + turnRadious * Mathf.Sin(pastTime * trigCo) * Vector3.left).normalized;
+                direction = (target.position + Vector3.up * turnHeight - transform.position + turnRadious * Mathf.Cos(pastTime * trigCo) * Vector3.right + turnRadious * Mathf.Sin(pastTime * trigCo) * Vector3.forward).normalized;
                 rb.velocity = direction * passiveSpeed;
                 pastTime += Time.deltaTime;
             }
