@@ -22,7 +22,7 @@ public class HUDManager : MonoBehaviour {
     }
     public void ActivateSpiritBar()
     {
-        print("ActivateSpiritBar");
+        //print("ActivateSpiritBar");
         spiritBar.SetActive(true);
         for (int i = 0; i < skillImages.Length; i++) {
             skillImages[i].color = Color.white;

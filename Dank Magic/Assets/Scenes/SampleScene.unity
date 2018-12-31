@@ -27640,6 +27640,11 @@ Prefab:
       propertyPath: skillObject
       value: 
       objectReference: {fileID: 2085924442}
+    - target: {fileID: 114835376976512856, guid: c9ae9b500ce01364ab177b37a6b2f62e,
+        type: 2}
+      propertyPath: soulPanel
+      value: 
+      objectReference: {fileID: 2112598336}
     m_RemovedComponents:
     - {fileID: 64187411892882020, guid: c9ae9b500ce01364ab177b37a6b2f62e, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: c9ae9b500ce01364ab177b37a6b2f62e, type: 2}

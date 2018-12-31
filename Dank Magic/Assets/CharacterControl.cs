@@ -8,7 +8,8 @@ public class CharacterControl : MonoBehaviour {
     public GameObject gameOverMenu;
     public GameObject eventSystem;
 
-    public RawImage skillObject;
+    //public RawImage skillObject;
+    public GameObject soulPanel;
 
 	public float translateConstant;
 	public float rotateConstant;
@@ -140,7 +141,7 @@ public class CharacterControl : MonoBehaviour {
                 }
                 if (ableToQ == false)
                 {
-                    if (qCounter > 5f)
+                    if (qCounter > 2.5f)
                     {
                         qCounter = 0;
 
@@ -159,7 +160,9 @@ public class CharacterControl : MonoBehaviour {
 	}
     void activateQ() {
         ableToQ = true;
-        skillObject.color = Color.cyan;
+       // skillObject.color = Color.cyan;
+        soulPanel.SetActive(true);
+        //print("Activated Q");
 
     }
     void attack() {
@@ -175,15 +178,19 @@ public class CharacterControl : MonoBehaviour {
 	void spellcast(int i) {
         if (ruhtasiAlindi)
         {
-            if (!isSpellcasting && !spiritRigidbody.gameObject.activeInHierarchy && ableToQ)
+            if (!isSpellcasting && !spiritRigidbody.gameObject.activeInHierarchy)
             {
-                if (i == 0 && !spiritRigidbody.gameObject.activeInHierarchy)
+                if (i == 0 && !spiritRigidbody.gameObject.activeInHierarchy && ableToQ)
                 {
                     if (onFloor)
                     {
                         proIndex = 0;
                         isSpellcasting = true;
+
                         animator.SetBool("isSpellcasting", true);
+                        qCounter = 0;
+                        ableToQ = false;
+                        soulPanel.SetActive(false);
                     }
                 }
                 else if (i == 1 && spirits > 0)
@@ -197,8 +204,7 @@ public class CharacterControl : MonoBehaviour {
                         hudManager.FireUsed();
                     }
                 }
-                ableToQ = false;
-                skillObject.color = Color.gray;
+                
 
             }
         }
