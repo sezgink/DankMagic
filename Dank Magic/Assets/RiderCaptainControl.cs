@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class RiderCaptainControl : MonoBehaviour {
 
 	Transform Player;
+    //public List<GameObject> createdFireballs;
     public List<GameObject> createdFireballs;
 	public float longRange;
 	public float meleeRange;
@@ -17,14 +18,19 @@ public class RiderCaptainControl : MonoBehaviour {
     public GameObject fireball;
     public GameObject rotatingFireball;
     bool deployed = false;
-
+    GameObject createdFireball;
+    
 	bool alive = true;
 	bool attacking = false;
 
-	float c1;
+    CleaverFireball cf;
+
+
+    float c1;
     float c2;
 	int health;
 	int souls;
+
 
 	public int rangeAttackPeriod;
 	public int meleeAttackPeriod;
@@ -38,7 +44,8 @@ public class RiderCaptainControl : MonoBehaviour {
 		foreach(var image in images) {
 			if (image.gameObject.name == "HealthForeground")
 				rawImage = image;
-		} 
+		}
+        createdFireballs = new List<GameObject>();
 		//rawImage = GameObject.Find ("HealthForeground").GetComponent<RawImage>();
 	}
 
@@ -46,20 +53,29 @@ public class RiderCaptainControl : MonoBehaviour {
     {
         Instantiate(fireball, transform.position + transform.forward * 1.5f + Vector3.up * 2f, Quaternion.identity);
     }
+    
     public void DeployRotatingBall() {
         //print("Deploy rotating ball");
         if (deployed)
         {
-            var selectedFireball = createdFireballs[createdFireballs.Count - 1];
-            selectedFireball.GetComponent<CleaverFireball>().ThrowFireball();
-            createdFireballs.Remove(selectedFireball);
+            if (createdFireballs.Count > 0)
+            {
+                GameObject fball = createdFireballs[0];
+                print(GameObject.ReferenceEquals(fball,createdFireball));
+                
+                
+                fball.GetComponent<CleaverFireball>().ThrowFireball();
+                //createdFireballs.Remove(fball);
+            }
             
         }
         else
         {
+            
             var fireballI = (GameObject)Instantiate(rotatingFireball, transform.position + transform.forward * 1.5f + Vector3.up * 2f, Quaternion.identity);
 
             createdFireballs.Add(fireball);
+            createdFireball = fireballI;
             
         }
     }

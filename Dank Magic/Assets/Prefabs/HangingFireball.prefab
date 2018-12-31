@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 4819144844733190}
   - component: {fileID: 33173918247615444}
   - component: {fileID: 23008315720310532}
+  - component: {fileID: 114501461063133212}
   - component: {fileID: 114638702985773166}
   - component: {fileID: 198756074128541286}
   - component: {fileID: 199382375585015166}
@@ -62,7 +63,6 @@ GameObject:
   - component: {fileID: 114170719584498304}
   - component: {fileID: 135922200023493628}
   - component: {fileID: 54277645202356446}
-  - component: {fileID: 114501461063133212}
   m_Layer: 0
   m_Name: HangingFireball
   m_TagString: Fire
@@ -306,6 +306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireExplosion: {fileID: 1649899911617936, guid: d20bd1195faa86a4d80ef59f7a1ccf5f,
     type: 2}
+  isThrowed: 0
   passiveSpeed: 8
   activeSpeed: 16
   speed: 0

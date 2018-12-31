@@ -1,14 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public class CleaverFireball : MonoBehaviour {
     public GameObject fireExplosion;
     private Transform target;
     private Rigidbody rb;
     Vector3 direction;
     float pastTime;
-    bool isThrowed = false;
+    public bool isThrowed = false;
 
     public float passiveSpeed;
     public float activeSpeed;
@@ -54,6 +56,7 @@ public class CleaverFireball : MonoBehaviour {
     public void ThrowFireball() {
         isThrowed = true;
     }
+
 
     private void OnTriggerEnter(Collider other)
     {
