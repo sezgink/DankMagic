@@ -13,6 +13,7 @@ public class KidDialogue : MonoBehaviour {
     [SerializeField] Text npcText;
     [SerializeField] ItemObtained itemObtained;
     [SerializeField] GameObject hudManager;
+    public GameObject topcuk;
 
 
     public GameObject manaTasiObj;
@@ -157,6 +158,7 @@ public class KidDialogue : MonoBehaviour {
     {
         manaTasiObj.SetActive(true);
         judyCon.ruhtasiAlindi = true;
+        topcuk.SetActive(false);
         hudManager.GetComponent<HUDManager>().ActivateSpiritBar();
         if (Input.GetKeyUp(KeyCode.Alpha1))
         {
