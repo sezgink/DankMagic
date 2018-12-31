@@ -19,6 +19,7 @@ public class RiderControl : MonoBehaviour {
     bool dealtDmg = false;
     public float destructionTime;
     float destructionCounter;
+    bool stunned = false;
 
 	int c1;
 	int health;
@@ -28,7 +29,7 @@ public class RiderControl : MonoBehaviour {
 		Player = GameObject.FindGameObjectWithTag ("Player").transform;
 		nma = GetComponent<NavMeshAgent> ();
 		animator = GetComponent<Animator> ();
-		health = 10;
+		health = 100;
         RawImage[] images = GetComponentsInChildren<RawImage>();
         foreach (var image in images)
         {
@@ -42,32 +43,35 @@ public class RiderControl : MonoBehaviour {
 	void Update () {
         if (alive)
         {
-            if ((Player.position - transform.position).magnitude <= meleeRange)
+            if (!stunned)
             {
-                meleeAttack();
-
-                animator.SetBool("isRunning", false);
-                nma.destination = Player.position;
-                nma.speed = 1;
-
-            }
-            else if ((Player.position - transform.position).magnitude <= seeRange)
-            {
-                if (!attacking)
+                if ((Player.position - transform.position).magnitude <= meleeRange)
                 {
-                    nma.destination = Player.position;
-                    nma.speed = 5;
-                    animator.SetBool("isAttacking", false);
-                    animator.SetBool("isRunning", true);
-                }
-            }
-            else
-            {
-                if (!attacking)
-                {
+                    meleeAttack();
 
                     animator.SetBool("isRunning", false);
-                    animator.SetBool("isAttacking", false);
+                    nma.destination = Player.position;
+                    nma.speed = 1;
+
+                }
+                else if ((Player.position - transform.position).magnitude <= seeRange)
+                {
+                    if (!attacking)
+                    {
+                        nma.destination = Player.position;
+                        nma.speed = 5;
+                        animator.SetBool("isAttacking", false);
+                        animator.SetBool("isRunning", true);
+                    }
+                }
+                else
+                {
+                    if (!attacking)
+                    {
+
+                        animator.SetBool("isRunning", false);
+                        animator.SetBool("isAttacking", false);
+                    }
                 }
             }
             c1++;
@@ -103,7 +107,7 @@ public class RiderControl : MonoBehaviour {
         if(r>3)
             animator.SetTrigger("Impact");
         health -= amount;
-		rawImage.rectTransform.localScale = new Vector3(health / 10f,1,1) ;
+		rawImage.rectTransform.localScale = new Vector3((float)health / 100f,1,1) ;
 		//print (health);
         
         swordCollider.enabled = false;
@@ -117,11 +121,13 @@ public class RiderControl : MonoBehaviour {
     public void EnterStagger()
     {
         nma.speed = 0;
+        stunned = true;
         dealtDmg = true;
     }
     public void exitStagger()
     {
         dealtDmg = false;
+        stunned = false;
         nma.speed = 3.5f;
     }
 	void death() {
@@ -154,18 +160,18 @@ public class RiderControl : MonoBehaviour {
 		if (col.gameObject.tag == "Player" && swordCollider.enabled && !dealtDmg) {
 			//print (col.gameObject.name);
             CharacterControl cc = col.GetComponent<CharacterControl>();
-            cc.Heal(-5);
+            cc.Heal(-30);
             dealtDmg = true;
 		}
 
         if(col.gameObject.layer == 9)
         {
-            takeDamage(1);
+            takeDamage(25);
         }
 
         if(col.gameObject.tag == "Fire")
         {
-            takeDamage(7);
+            takeDamage(60);
         }
 	}
 }

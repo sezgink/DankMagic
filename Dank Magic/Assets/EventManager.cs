@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class EventManager : MonoBehaviour {
     [SerializeField] GameObject PauseMenu;
-	// Use this for initialization
-	void Start () {
+    [SerializeField] GameObject GameOverMenu;
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -31,5 +34,11 @@ public class EventManager : MonoBehaviour {
     public void exitButton()
     {
         SceneManager.LoadScene("Main Menu");
+    }
+    public void retryButton() {
+        SceneManager.LoadScene("SampleScene");
+    }
+    public void pretargetRetry() {
+        GetComponent<EventSystem>().firstSelectedGameObject = GameOverMenu.transform.GetChild(0).gameObject;
     }
 }
