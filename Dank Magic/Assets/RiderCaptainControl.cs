@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -56,6 +57,7 @@ public class RiderCaptainControl : MonoBehaviour {
     
     public void DeployRotatingBall() {
         //print("Deploy rotating ball");
+        /*
         if (deployed)
         {
             if (createdFireballs.Count > 0)
@@ -68,6 +70,7 @@ public class RiderCaptainControl : MonoBehaviour {
                 //createdFireballs.Remove(fball);
             }
             
+            
         }
         else
         {
@@ -78,6 +81,9 @@ public class RiderCaptainControl : MonoBehaviour {
             createdFireball = fireballI;
             
         }
+        */
+        Instantiate(rotatingFireball, transform.position + transform.forward * 1.5f + Vector3.up * 2f, Quaternion.identity);
+
     }
 
     // Update is called once per frame
@@ -168,8 +174,12 @@ public class RiderCaptainControl : MonoBehaviour {
     {
         if (other.gameObject.tag == "Fire")
         {
-            if(other.GetComponent<CleaverFireball>().owner!=2)
-                takeDamage(5);
+           
+                if (other.GetComponent<CleaverFireball>().owner != 2)
+                    takeDamage(5);
+            
+
+            
         }
     }
     //void OnCollisionEnter(Collision col) {

@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
 public class CleaverFireball : MonoBehaviour {
     public GameObject fireExplosion;
     private Transform target;
     private Rigidbody rb;
     Vector3 direction;
-    float pastTime;
+    float pastTime = 0;
     public bool isThrowed = false;
 
     public float passiveSpeed;
@@ -19,6 +17,8 @@ public class CleaverFireball : MonoBehaviour {
     public float turnRadious;
     public float trigCo = 1f;
     public int owner = 2;
+    float activationTime;
+    
     private void OnEnable()
     {
         print("Ball created");
@@ -29,11 +29,13 @@ public class CleaverFireball : MonoBehaviour {
         else if(rb) {
             rb.velocity = Vector3.forward * 12;
         }
+        activationTime = Random.Range(5f,30f);
 
 
     }
     private void Update()
     {
+        pastTime += Time.deltaTime;
         if (target && rb)
         {
             if (isThrowed)
@@ -51,6 +53,8 @@ public class CleaverFireball : MonoBehaviour {
                 pastTime += Time.deltaTime;
             }
         }
+        if (pastTime > activationTime)
+            ThrowFireball();
         
     }
     public void ThrowFireball() {

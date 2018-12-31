@@ -308,7 +308,7 @@ MonoBehaviour:
     type: 2}
   isThrowed: 0
   passiveSpeed: 8
-  activeSpeed: 16
+  activeSpeed: 8
   speed: 0
   turnHeight: 8
   turnRadious: 8
