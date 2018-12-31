@@ -12,6 +12,8 @@ public class KidDialogue : MonoBehaviour {
     [SerializeField] Text playerText;
     [SerializeField] Text npcText;
     [SerializeField] ItemObtained itemObtained;
+    [SerializeField] GameObject hudManager;
+
 
     public GameObject manaTasiObj;
     public CharacterControl judyCon;
@@ -34,10 +36,16 @@ public class KidDialogue : MonoBehaviour {
 
     public void StartConversation()
     {
+        /*
         npcText.text = "Çocuk: \"Ühü ühü... Herkesin ruhunu emdiler. Ühü ühü...\"";
         playerText.text = "Judy:\n" +
             "1.\t\"Nasıl emdiler?\"\n" +
             "2.\t\"Kim emdi?\"";
+            */
+        npcText.text = "The Kid: \"I...I can't believe. I have no one. They made something...\"";
+        playerText.text = "Judy:\n" +
+            "1.\t\"What happened?\"\n" +
+            "2.\t\"Who are they?\"";
 
         playerDialogueTextObj.SetActive(true);
         npcDialogueTextObj.SetActive(true);
@@ -79,10 +87,16 @@ public class KidDialogue : MonoBehaviour {
         {
             if (Input.GetKeyUp(KeyCode.Alpha1))
             {
+                /*
                 npcText.text = "Çocuk: \"Mor ışıklar... Emin değilim. Ühü ühü...\"";
                 playerText.text = "Judy:\n" +
                     "1.\t\"Kimlerdi peki? Görebildin mi?\"\n" +
                     "2.\t\"Tamam. Sen burada dur.\"\n";
+                    */
+                npcText.text = "The Kid: \"I saw purple lights... Not sure...\"";
+                playerText.text = "Judy:\n" +
+                    "1.\t\"Who were they? Could you see?\"\n" +
+                    "2.\t\"Okay wait here.\"\n";
                 isLayer_1 = false;
                 isLayer_2 = true;
                 layer_1_Decision = 1;
@@ -125,17 +139,25 @@ public class KidDialogue : MonoBehaviour {
 
     private void DialogueDuplicate_2()
     {
+        /*
         npcText.text = "Çocuk: \"Kötü kalpli, hepsi kötü kalpliydi. Onlardan bu taşı çaldım.\"";
         playerText.text = "Judy:\n" +
             "1.\t\"Hmm... Kara büyü. Tahmin etmeliydim. Sen burada bekle küçüğüm. Ben icabına bakacağım.\"\n" +
             "2.\t\"Goblin büyücü taşına benziyor. Muhtemelen bunların hepsi bir halüsinasyon.\"\n" +
             "3.\t\"Sen burada dur çocuğum, ben geleceğim.";
+            */
+        npcText.text = "Çocuk: \"They are b... Bad people, mercyless... I stealed that stone from them. I hop you can do something\"";
+        playerText.text = "Judy:\n" +
+            "1.\t\"Dark Magic stone, i am sory kid, wait here until i come back.\"\n" +
+            "2.\t\"It is not an important thing you have been hallucinated.\"\n" +
+            "3.\t\"Just wait here, OK?";
     }
 
     private void DialogueDuplicate_3()
     {
         manaTasiObj.SetActive(true);
         judyCon.ruhtasiAlindi = true;
+        hudManager.GetComponent<HUDManager>().ActivateSpiritBar();
         if (Input.GetKeyUp(KeyCode.Alpha1))
         {
             StartCoroutine(FinishConversation());

@@ -28,6 +28,7 @@ public class HelperDialogue : MonoBehaviour {
 
     public void StartConversation()
     {
+
         npcText.text = "Narinkuş: \"Yardım edin!.. Köyümüzü eşkıyalar bastı. Bir çeşit... Bir çeşit taş var..." +
             "Çok, çok korkunçtu. Lütfen, yardım edin!\"";
         playerText.text = "Judy:\n" +

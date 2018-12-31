@@ -20049,7 +20049,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: "Konu\u015Fmak i\xE7in 'E' ye bas"
+  m_text: Press 'E' To Talk
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e0ff5c126df9f8144a53b3047c03984d, type: 2}
   m_sharedMaterial: {fileID: 21827933163122968, guid: e0ff5c126df9f8144a53b3047c03984d,
@@ -20126,11 +20126,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -25477,6 +25477,7 @@ MonoBehaviour:
   playerText: {fileID: 1797196787}
   npcText: {fileID: 915875464}
   itemObtained: {fileID: 1384053425}
+  hudManager: {fileID: 504372047}
   manaTasiObj: {fileID: 1238448391}
   judyCon: {fileID: 1231911782}
 --- !u!136 &849721068
@@ -32657,13 +32658,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1238448392}
+  - component: {fileID: 1238448393}
   m_Layer: 5
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1238448392
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32685,6 +32687,17 @@ RectTransform:
   m_AnchoredPosition: {x: 6, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1238448393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1238448391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0038d8518ac03c4ba2c1cc987e854e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1242506026
 GameObject:
   m_ObjectHideFlags: 0
@@ -50120,7 +50133,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: "'Ruh Ta\u015F\u0131' al\u0131nd\u0131"
+  m_text: You took 'Soul Stone'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e0ff5c126df9f8144a53b3047c03984d, type: 2}
   m_sharedMaterial: {fileID: 21827933163122968, guid: e0ff5c126df9f8144a53b3047c03984d,
@@ -50201,7 +50214,7 @@ MonoBehaviour:
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
