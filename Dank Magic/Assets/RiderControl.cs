@@ -17,6 +17,8 @@ public class RiderControl : MonoBehaviour {
 	bool alive = true;
 	bool attacking = false;
     bool dealtDmg = false;
+    public float destructionTime;
+    float destructionCounter;
 
 	int c1;
 	int health;
@@ -38,15 +40,19 @@ public class RiderControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (alive) {
-			if ((Player.position - transform.position).magnitude <= meleeRange) {
-				meleeAttack ();
+        if (alive)
+        {
+            if ((Player.position - transform.position).magnitude <= meleeRange)
+            {
+                meleeAttack();
 
-				animator.SetBool ("isRunning", false);
+                animator.SetBool("isRunning", false);
                 nma.destination = Player.position;
                 nma.speed = 1;
 
-			} else if ((Player.position - transform.position).magnitude <= seeRange) {
+            }
+            else if ((Player.position - transform.position).magnitude <= seeRange)
+            {
                 if (!attacking)
                 {
                     nma.destination = Player.position;
@@ -54,16 +60,23 @@ public class RiderControl : MonoBehaviour {
                     animator.SetBool("isAttacking", false);
                     animator.SetBool("isRunning", true);
                 }
-			} else {
+            }
+            else
+            {
                 if (!attacking)
                 {
 
                     animator.SetBool("isRunning", false);
                     animator.SetBool("isAttacking", false);
                 }
-			}
-			c1++;
-		}
+            }
+            c1++;
+        }
+        else {
+            destructionCounter += Time.deltaTime;
+            if (destructionCounter > destructionTime)
+                destroyObject();
+        }
 	}
 	void meleeAttack() {
 		if (c1 > meleeAttackPeriod) {
@@ -81,16 +94,18 @@ public class RiderControl : MonoBehaviour {
         animator.SetBool ("isAttacking",false);
 		attacking = false;
         nma.speed = 3.5f;
-        print("Stopping attack");
+       // print("Stopping attack");
     }
 	public void takeDamage(int amount) {
         //dealtDmg = false;
 		stopAttack ();
-		animator.SetTrigger ("Impact");
-		health -= amount;
+        int r = Random.Range(0,6);
+        if(r>4)
+            animator.SetTrigger("Impact");
+        health -= amount;
 		rawImage.rectTransform.localScale = new Vector3(health / 10f,1,1) ;
-		print (health);
-        nma.speed = 0;
+		//print (health);
+        
         swordCollider.enabled = false;
         if (health < 1)
         {
@@ -101,6 +116,7 @@ public class RiderControl : MonoBehaviour {
 	}
     public void EnterStagger()
     {
+        nma.speed = 0;
         dealtDmg = true;
     }
     public void exitStagger()
@@ -130,7 +146,9 @@ public class RiderControl : MonoBehaviour {
     }
     public void destroyObject()
     {
+        
         gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 	void OnTriggerEnter(Collider col) {
 		if (col.gameObject.tag == "Player" && swordCollider.enabled && !dealtDmg) {

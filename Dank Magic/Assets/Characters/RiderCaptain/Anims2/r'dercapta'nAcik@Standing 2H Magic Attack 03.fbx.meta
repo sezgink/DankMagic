@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b52ce048a79a137428771e09aef1a3ab
+guid: 2b6f3d019b0b32a48b4a2d482d0a4b5f
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -135,7 +135,7 @@ ModelImporter:
     400126: mixamorig:Spine1
     400128: mixamorig:Spine2
     400130: //RootNode
-    7400000: Two Handed Sword Death
+    7400000: mixamo.com
     9500000: //RootNode
   externalObjects: {}
   materials:
@@ -164,35 +164,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: Two Handed Sword Death
-      takeName: mixamo.com
-      firstFrame: 0
-      lastFrame: 78
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+    clipAnimations: []
     isReadable: 1
   meshes:
     lODScreenPercentages: []
