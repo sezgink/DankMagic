@@ -47,13 +47,20 @@ public class RiderControl : MonoBehaviour {
                 nma.speed = 1;
 
 			} else if ((Player.position - transform.position).magnitude <= seeRange) {
-				nma.destination = Player.position;
-				nma.speed = 5;
-				animator.SetBool ("isAttacking", false);
-				animator.SetBool ("isRunning", true);
+                if (!attacking)
+                {
+                    nma.destination = Player.position;
+                    nma.speed = 5;
+                    animator.SetBool("isAttacking", false);
+                    animator.SetBool("isRunning", true);
+                }
 			} else {
-				animator.SetBool ("isRunning", false);
-				animator.SetBool ("isAttacking", false);
+                if (!attacking)
+                {
+
+                    animator.SetBool("isRunning", false);
+                    animator.SetBool("isAttacking", false);
+                }
 			}
 			c1++;
 		}
@@ -74,9 +81,10 @@ public class RiderControl : MonoBehaviour {
         animator.SetBool ("isAttacking",false);
 		attacking = false;
         nma.speed = 3.5f;
+        print("Stopping attack");
     }
 	public void takeDamage(int amount) {
-        dealtDmg = false;
+        //dealtDmg = false;
 		stopAttack ();
 		animator.SetTrigger ("Impact");
 		health -= amount;
@@ -91,17 +99,34 @@ public class RiderControl : MonoBehaviour {
         }
 		
 	}
+    public void EnterStagger()
+    {
+        dealtDmg = true;
+    }
     public void exitStagger()
     {
+        dealtDmg = false;
         nma.speed = 3.5f;
     }
 	void death() {
 		animator.SetTrigger ("isDeath");
 		alive = false;
     }
+    public void TrueDealtDamage()
+    {
+        dealtDmg = true;
+        
+    }
     public void SetDealtDamage()
     {
+       
         dealtDmg = false;
+
+    }
+    public void CheckAttack() {
+        print("Checking attack");
+        if ((Player.position - transform.position).magnitude > meleeRange)
+            stopAttack();
     }
     public void destroyObject()
     {
