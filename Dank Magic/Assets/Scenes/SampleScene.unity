@@ -5900,6 +5900,11 @@ Prefab:
       propertyPath: greatPeriod
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 114461446948084858, guid: e5addbc73ce259149aa046c38ae68ed3,
+        type: 2}
+      propertyPath: eventSystem
+      value: 
+      objectReference: {fileID: 1107968643}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5addbc73ce259149aa046c38ae68ed3, type: 2}
   m_IsPrefabAsset: 0
@@ -19503,7 +19508,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &686343196
 RectTransform:
   m_ObjectHideFlags: 0
@@ -31450,6 +31455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PauseMenu: {fileID: 1500950446}
   GameOverMenu: {fileID: 334364868}
+  WinnedGameMenu: {fileID: 686343195}
 --- !u!1001 &1111358545
 Prefab:
   m_ObjectHideFlags: 0

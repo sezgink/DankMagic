@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class RiderCaptainControl : MonoBehaviour {
 
+    [SerializeField] GameObject eventSystem; 
 	Transform Player;
     //public List<GameObject> createdFireballs;
     public List<GameObject> createdFireballs;
@@ -148,7 +149,7 @@ public class RiderCaptainControl : MonoBehaviour {
         else {
             deathCounter += Time.deltaTime;
             if (deathCounter > deathTime) {
-
+                eventSystem.GetComponent<EventManager>().WinnedGame();
             }
         }
 	}
