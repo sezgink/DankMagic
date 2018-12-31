@@ -24,6 +24,8 @@ public class EventManager : MonoBehaviour {
                 if (PauseMenu.active.Equals(false))
                 {
                     PauseMenu.SetActive(!PauseMenu.active);
+                    GetComponent<EventSystem>().SetSelectedGameObject(PauseMenu.transform.GetChild(0).gameObject);
+
                     Time.timeScale = 0f;
                 }
                 else
