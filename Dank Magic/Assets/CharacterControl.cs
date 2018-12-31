@@ -38,6 +38,8 @@ public class CharacterControl : MonoBehaviour {
     bool alive = true;
     float deadCounter = 0f;
     public float deadTime = 4f;
+    bool fireUsed = false;
+    int c5 = 0;
 
     public Collider swordCollider;
     // Use this for initialization
@@ -123,6 +125,10 @@ public class CharacterControl : MonoBehaviour {
                     gameObject.SetActive(true);
                     Start();
                 }
+                if (c5 > 10) {
+                    hudManager.FireRefresh();
+                }
+                c5++;
             }
         }
         else {
@@ -163,6 +169,7 @@ public class CharacterControl : MonoBehaviour {
                         proIndex = 1;
                         isSpellcasting = true;
                         animator.SetBool("isSpellcasting", true);
+                        hudManager.FireUsed();
                     }
                 }
             }

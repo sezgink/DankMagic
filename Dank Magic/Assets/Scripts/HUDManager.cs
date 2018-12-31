@@ -7,13 +7,25 @@ public class HUDManager : MonoBehaviour {
 
     public GameObject spiritBar;
     public Image[] spiritImages;
+    public Image[] skillImages;
     public Slider healthBar;
 
     public CharacterControl judyControl;
 
+
+    public void FireUsed() {
+        spiritImages[0].color = Color.gray;
+    }
+    public void FireRefresh()
+    {
+        spiritImages[0].color = Color.white;
+    }
     public void ActivateSpiritBar()
     {
         spiritBar.SetActive(true);
+        for (int i = 0; i < spiritImages.Length; i++) {
+            spiritImages[i].color = Color.white;
+        }
     }
 
     public void UpdateSpiritBar()

@@ -60,6 +60,8 @@ public class EventManager : MonoBehaviour {
     }
     public void WinnedGame() {
         WinnedGameMenu.SetActive(true);
+        Time.timeScale = 0f;
+
         if (!isGameOver)
             GetComponent<EventSystem>().SetSelectedGameObject(WinnedGameMenu.transform.GetChild(0).gameObject);
 
