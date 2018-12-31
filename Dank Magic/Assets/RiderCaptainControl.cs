@@ -26,6 +26,9 @@ public class RiderCaptainControl : MonoBehaviour {
     public float greatPeriod;
     CleaverFireball cf;
 
+    float deathCounter = 0f;
+    public float deathTime = 3f;
+    bool isGone = false;
 
     float c1;
     float c2;
@@ -88,7 +91,8 @@ public class RiderCaptainControl : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		if (alive) {
+        if (alive)
+        {
             /*
 			if ((Player.position - transform.position).magnitude <= meleeRange) {
 				nma.destination = Player.position;
@@ -121,7 +125,8 @@ public class RiderCaptainControl : MonoBehaviour {
 
             if ((Player.position - transform.position).magnitude <= seeRange)
             {
-                if (greatCounter > greatPeriod) {
+                if (greatCounter > greatPeriod)
+                {
                     rangeAttack();
                 }
                 nma.destination = Player.position;
@@ -131,14 +136,21 @@ public class RiderCaptainControl : MonoBehaviour {
                     nma.speed = 0;
                 animator.SetBool("isAttacking", false);
                 animator.SetBool("isRunning", true);
-                if ((Player.position - transform.position).magnitude <= meleeRange) {
+                if ((Player.position - transform.position).magnitude <= meleeRange)
+                {
                     meleeAttack();
                 }
             }
             greatCounter += Time.deltaTime;
             c1 += Time.deltaTime;
-			c2 += Time.deltaTime;
-		}
+            c2 += Time.deltaTime;
+        }
+        else {
+            deathCounter += Time.deltaTime;
+            if (deathCounter > deathTime) {
+
+            }
+        }
 	}
 	void meleeAttack() {
 		if (c1 > meleeAttackPeriod) {
@@ -191,6 +203,7 @@ public class RiderCaptainControl : MonoBehaviour {
 	void death() {
 		animator.SetTrigger ("Death");
 		alive = false;
+
 	}
 
     private void OnTriggerEnter(Collider other)
@@ -198,7 +211,7 @@ public class RiderCaptainControl : MonoBehaviour {
         if (other.gameObject.tag == "Fire")
         {
            
-                if (other.GetComponent<CleaverFireball>().owner != 2)
+                if (other.GetComponent<CleaverFireball>()==null)
                     takeDamage(40);
             
 
