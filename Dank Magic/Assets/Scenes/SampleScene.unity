@@ -40272,7 +40272,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1107968647}
-        m_MethodName: continueButton
+        m_MethodName: retryButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

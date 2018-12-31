@@ -41,11 +41,13 @@ public class EventManager : MonoBehaviour {
         Time.timeScale = 1f;
 
         SceneManager.LoadScene("Main Menu");
+        isGameOver = true;
     }
     public void retryButton() {
         Time.timeScale = 1f;
 
         SceneManager.LoadScene("SampleScene");
+        isGameOver = true;
     }
     public void pretargetRetry() {
         GameOverMenu.SetActive(true);
